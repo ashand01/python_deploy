@@ -7,16 +7,10 @@ import pprint
 ec2 = boto3.resource('ec2')
 client = boto3.client('ec2')
 
-#UserData = """#!/user/bin/python
-#import sys
-#sys.stdout = open('/tmp/file', 'w')
-#print 'test'
-#"""
 
 def launch_test_instance():
 
    instances = ec2.create_instances(
-      #use the image and spin up a box
       ImageId='ami-2051294a',
       InstanceType='t2.micro',
       MinCount=1,
@@ -25,7 +19,6 @@ def launch_test_instance():
       SecurityGroupIds=['launch-wizard-2'],
       UserData="""#!/usr/bin/python
 import sys, os
-
 
 def set_up_git():
    print('install git')
