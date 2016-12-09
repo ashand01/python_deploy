@@ -1,10 +1,12 @@
 import boto3
 import json
+import pprint
 
 # for launching new instances see: http://boto3.readthedocs.io/en/latest/guide/migrationec2.html#launching-new-instances
 # ec2 managment
 ec2 = boto3.resource('ec2')
 sqs = boto3.client('sqs')
+client = boto3.client('ec2')
 
 def list_running():
    instances = ec2.instances.filter(
