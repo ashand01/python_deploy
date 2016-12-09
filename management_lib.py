@@ -34,7 +34,7 @@ def list_by_label():
 def stop_by_id(ids):
    ec2.instances.filter(InstanceIds=ids).stop()
 
-def env_2_json:
+def env_2_json():
    response = client.describe_instances()
    pprint.pprint(response)
    
