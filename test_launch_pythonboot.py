@@ -10,7 +10,7 @@ client = boto3.client('ec2')
 amazon_image = 'ami-2051294a'                                       # This will launch a red hat instance
 amazon_instance = 't2.micro'                                        # we've been working with micro's, if you use Amizon Linux, you could launch a nono
 amazon_pem_key = 'load-ballancer-static-content'                    # the name of the key/pem file you would like to use to access this machine
-#firewall_profile = 'launch-wizard-2'                               # the security group name you would like to use, remember, this is your firewall, make sure the ports you want open are open
+firewall_profiles = ['launch-wizard-2']                               # the security group name you would like to use, remember, this is your firewall, make sure the ports you want open are open
 
 print(amazon_image)
 print(amazon_instance)
@@ -24,7 +24,7 @@ def launch_test_instance():
       MinCount=1,
       MaxCount=1,
       KeyName = amazon_pem_key,
-      SecurityGroupIds=['launch-wizard-2'],                          # Security group is hard coded for now due to a type missmatch that I still need to resolve, just put the name of your group here.
+      SecurityGroupIds = firewall_profiles,                          # Security group is hard coded for now due to a type missmatch that I still need to resolve, just put the name of your group here.
       UserData="""#!/usr/bin/python
 import sys, os
 # your script here... I don't want to see my exact script or my repo
@@ -52,4 +52,3 @@ app_install.install_apache()
 
 
 launch_test_instance()
-
