@@ -27,3 +27,9 @@ def list_by_label():
        Filters=[{'Name': 'instance-state-name', 'Values': ['running']}])
     for instance in instances:
        print(instance.id, instance.public_ip_address, instance.tags)
+
+# ids = ['list, 'of', 'machine-ids']
+# or
+# ids = ['one-machine-id'] just remember, it must be in list form, which means square brakcets and single quotes.
+def stop_by_id(ids):
+   ec2.instances.filter(InstanceIds=ids).stop()
