@@ -24,7 +24,7 @@ def launch_test_instance():
       MinCount=1,
       MaxCount=1,
       KeyName = amazon_pem_key,
-      SecurityGroupIds = firewall_profiles,                          # Security group is hard coded for now due to a type missmatch that I still need to resolve, just put the name of your group here.
+      SecurityGroupIds = firewall_profiles,
       UserData="""#!/usr/bin/python
 import sys, os
 # your script here... I don't want to see my exact script or my repo
